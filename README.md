@@ -50,6 +50,8 @@ Digital business strives for intelligence in its decision making — often in re
 
 Event processing software is decoupled and extensible, it is also stateless and adaptively scalable, while allowing for isolated versioning. It is natively intermediated, tolerates disruptions, and is ready to benefit from in-memory and parallel computing. As such, it is a natural choice for business activity monitoring, interactions with the IoT, multi enterprise integration and extreme transaction volume applications, like Internet gaming and some securities trading systems.
 
+A doctor accepting a job is an event, just like in real life when this event happens it triggers action from other departments, our systems should recognize this change of state and should notify other systems of the event. 
+
  
 ## Think business objectives: Choose macroservices, miniservices or microservices
 
