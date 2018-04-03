@@ -16,6 +16,7 @@ ____
 ## Think Integrity: Guard the accuracy of your data 
 When building an application we should closely control database and file system access to ensure data integrity and consistency. Create a small number of privileged data services, optimized for efficiency in data access, and ensure these are the only services that are allowed to access the data stores directly the internal design and language are, of course, fully hidden behind the SOA-style, well-documented interface of the service that's accessible via standard means, like REST, SOAP or message-oriented APIs.
 
+We originally defined SSN field in Salesforce as unencrypted.  Later security concerns lead us to want to mask SSN but a few of the architecture decisions made it so it was not possible to do so, so we created a second masked SSN field that synched with the original.  Then additional fields were created for SSN and it has led to copies of a provider’s SSN being in a multitude of places and creating many opportunities for data integrity to be compromised.  
 
 ## Think consumer-grade: Use design thinking 
 Think "mobile first" and with the end consumer in mind.  This doesn't mean that all our front ends have to be or will be mobile. Rather, it implies that the fundamentals of mobile application design and architectures are not just for mobile devices but all platforms and help create a model of design and architecture that should be used in the majority of new application designs.  The majority of web traffic (57%) is viewed on mobile devices and represents the experience most users are comfortable
@@ -50,6 +51,8 @@ Digital business strives for intelligence in its decision making — often in re
 
 Event processing software is decoupled and extensible, it is also stateless and adaptively scalable, while allowing for isolated versioning. It is natively intermediated, tolerates disruptions, and is ready to benefit from in-memory and parallel computing. As such, it is a natural choice for business activity monitoring, interactions with the IoT, multi enterprise integration and extreme transaction volume applications, like Internet gaming and some securities trading systems.
 
+A doctor accepting a job is an event, just like in real life when this event happens it triggers action from other departments, our systems should recognize this change of state and should notify other systems of the event. 
+
  
 ## Think business objectives: Choose macroservices, miniservices or microservices
 
@@ -65,6 +68,8 @@ outcomes.  When we lead with a technical choice, we lose focus of what we are a
 ## Think reusability: Develop solutions that maximize reuse and control technical diversity
 
 As we maximize our reuse, we will be able to focus more on capabilities for the organization. This will in turn allow us to get the business what they need before they even know they need it.
+
+As the teams communicate affectively, we will be able to see where/what we can reuse code and processes. Sharing what has already been done, allows other teams to consume those resources.  Creating a PDF generator for one PXT that can be reused by other PXT’s.
 
 
 ## Think insight: Design for analytics and intelligence everywhere
