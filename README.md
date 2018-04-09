@@ -30,7 +30,7 @@ systems or the “ecosystem” of the organization must always be considered.  
 systems that operate purely independently. Systems must serve other systems and the greatest value for the business
 will come from the highest level of interoperability.      
 
- 
+ SPecialty is a current challenge.  Specialy exits in a variety of places, and multiple applications are created around specialty.  It has led to a varaity of applications and data marts with no single source of truth. An ecosystem would consider all needs and provide a better source of truth with interoperabiltity of more systems.
 
 ## Think Security: Design for real world threats and to maintain compliance
 
