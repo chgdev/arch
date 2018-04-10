@@ -19,9 +19,10 @@ When building an application we should closely control database and file system 
 We originally defined SSN field in Salesforce as unencrypted.  Later security concerns lead us to want to mask SSN but a few of the architecture decisions made it so it was not possible to do so, so we created a second masked SSN field that synched with the original.  Then additional fields were created for SSN and it has led to copies of a provider’s SSN being in a multitude of places and creating many opportunities for data integrity to be compromised.  
 
 ## Think consumer-grade: Use design thinking 
-Think "mobile first" and with the end consumer in mind.  This doesn't mean that all our front ends have to be or will be mobile. Rather, it implies that the fundamentals of mobile application design and architectures are not just for mobile devices but all platforms and help create a model of design and architecture that should be used in the majority of new application designs.  The majority of web traffic (57%) is viewed on mobile devices and represents the experience most users are comfortable
+Empathy is the key word here, understanding the usage patterns and needs of the customer, especially when the customer is the business.  Think "mobile first" and with the end consumer in mind.  This doesn't mean that all our front ends have to be or will be mobile. Rather, it implies that the fundamentals of mobile application design and architectures are not just for mobile devices but all platforms and help create a model of design and architecture that should be used in the majority of new application designs.  The majority of web traffic (57%) is viewed on mobile devices and represents the experience most users are comfortable.  
 with.
 
+A classic example of design thinking is Oral B and their USB toothbrush.  The challenges customers have is making sure they are brushing enough, charging the brush and ordering replacement heads.  They made a brush that collected metrics like a fitness tracker and when plugged into a USB port would download the data, charge the device and prompt the user to order replacement heads when use levels indicated it was time to replace the brush head.
 
 ## Think ecosystems: Build for long term efficiency and maximum value
 
@@ -30,7 +31,7 @@ systems or the “ecosystem” of the organization must always be considered.  
 systems that operate purely independently. Systems must serve other systems and the greatest value for the business
 will come from the highest level of interoperability.      
 
- SPecialty is a current challenge.  Specialy exits in a variety of places, and multiple applications are created around specialty.  It has led to a varaity of applications and data marts with no single source of truth. An ecosystem would consider all needs and provide a better source of truth with interoperabiltity of more systems.
+Specialty is a current challenge.  Specialy exits in a variety of places, and multiple applications are created around specialty.  It has led to a varaity of applications and data marts with no single source of truth. An ecosystem would consider all needs and provide a better source of truth with interoperabiltity of more systems. 
 
 ## Think Security: Design for real world threats and to maintain compliance
 
