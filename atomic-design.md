@@ -60,9 +60,7 @@ The above example uses Vue JS as an example.  But in simple terms it
 
 ##Why Vue?
 
-First off, you do need Vue, or any framework to make reusable components, and use the principles of 
-atomic design.  It is simply a tool to simplify the process. It is a means to an end, and not the 
-end in and of itself.  For the rest of this guide, we will be using Vue JS, and vue files.
+First off, you do not need Vue, or any framework to make reusable components, and use the principles of atomic design.  It is simply a tool to simplify the process. It is a means to an end, and not the end in and of itself.  For the rest of this guide, we will be using Vue JS, and vue files.
 
 Vue helps us immensely with atomic design.  Vue will isolate our scopes, help control which components
 can access or alter the state of other components, and for you CSS fans, it will isolate the styling of 
