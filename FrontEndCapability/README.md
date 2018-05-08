@@ -21,6 +21,7 @@ Consistant frameworks for design over implentation solutions.
 
 
 ## Think real-time: Integrate immediate analysis with transactions, events and context
+What where and when of actionable business events that occur should handle in a clearly defined front-end transaction. Keep event hooks in mind as architecting these solutions, for potential broadcasting and logging.
 
 
 
@@ -28,6 +29,7 @@ Consistant frameworks for design over implentation solutions.
 
  
 ## Think business objectives: Choose macroservices, miniservices or microservices
+This particular architectural guideline has a tangential effect on the frontend. When creating front-end applications favor domain driven microservices first, then explore aggregation APIs second. Only when the performance of microservices begins to degrade the client application, should you try to create apis to format data specific to client-side representation.
 
 
 ## Think business outcomes: Organize around capabilities not technologies
