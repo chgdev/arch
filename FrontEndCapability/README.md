@@ -5,7 +5,7 @@ The perpose of this section is to answer our architecutal
 ____
 
 ## Think Integrity: Guard the accuracy of your data 
-Data integrity is broken down into two modes of thought; *process* and *state*. As far as process is concerned the front end should put as many steps in place to ensure that the date that is processed to get as close to a standard 
+Data integrity is broken down into two modes of thought; *process* and *state*. As far as process is concerned the front end should put as mirror steps in place to final quality gates to ensure that the data that is transmitted gets as close to the desired standards as possible. When it comes to state management, make it transactional, and only surface state that to top-level scope that is business or domain relevant.
 
 ## Think consumer-grade: Use design thinking 
 Consistant frameworks for design over implentation solutions.
@@ -29,7 +29,7 @@ What where and when of actionable business events that occur should handle in a 
 
  
 ## Think business objectives: Choose macroservices, miniservices or microservices
-This particular architectural guideline has a tangential effect on the frontend. When creating front-end applications favor domain driven microservices first, then explore aggregation APIs second. Only when the performance of microservices begins to degrade the client application, should you try to create apis to format data specific to client-side representation.
+This particular architectural guideline has a tangential effect on the frontend. When creating front-end applications favor domain driven microservices first, then explore aggregation APIs second. Only when the performance of microservices begins to degrade the client application, should you try to create APIs to format data specific to client-side representation. The front end making decisions about data manipulation this would be a *red flag.*
 
 
 ## Think business outcomes: Organize around capabilities not technologies
