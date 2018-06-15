@@ -37,12 +37,17 @@ The deployed environment for an API is also irrelevant.
 
 Nowhere in the URL should there be any indication of underlying environments or architectures.
 
+### Non-breaking Changes
+Whenever possible, make additive non-breaking changes to APIs. This will help avoid the pain of maintaining multiple deployed versions. See [versioning](#versioning).
 
-## Versioning <a name="versioning"></a>
+
+## <a name="versioning"></a> Versioning
 When tagging a build, use [Semantic Versioning](http://semver.org).
 
 ### Deployed Versions
 While not required, providing versioning is an excellent way to provide non-breaking forward-looking changes to an API with existing consumers.
+
+Be cautious when building APIs. Breaking changes will necessitate new versions and you will have to deploy (and maintain) multiple versions OR all dependent clients will have to conform to the changes. As soon as you deploy multiple versions, you may find it costly to keep multiple versions available long-term.
 
 #### Syntax
 Specify versions in the URL as part of the folder structure. The version of each endpoint should be specified just after the endpoint name.
@@ -101,7 +106,7 @@ Example:
 
 **NOTE:** 'travel' is a [container](#container), not a service, therefore it need not be plural.
 
-#### Container (optional)
+#### <a name="container"></a> Container (optional)
 There may be a logical container for a collection of APIs. This may even be multiple levels.
 
 This could be a categorization, logical structure, or a named collection like "tools" or "helpers".
