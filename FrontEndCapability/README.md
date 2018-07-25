@@ -33,6 +33,28 @@ This particular architectural guideline has a tangential effect on the frontend.
 
 
 ## Think business outcomes: Organize around capabilities not technologies
+By focusing on capabilities and not technologies, we are able to identify our end goal, and build our infrastructure, teams and technology stacks to best achieve that goal while taking future initiatives into account during our planning. By focusing on technology first, we run the risk of building a system that can become quickly outdated, and siloed, maintainable only by specialized developers in that technology.
+
+CHG examples of capability-driven projects
+
+PDE: 
+* The capability was first defined (online portal to help our providers better interact with us)
+* Team created to decide the technologies we would use to achieve our goal
+* Cross-functional (full-stack) team created to build out this capability
+
+Front-end Sites
+* Capability defined – move our sites from the existing platform onto a new platform
+* Team created to decide the technologies we would use to achieve our goal
+* Cross-functional (full-stack) team created to build out this capability – each site built on the same foundation, but using different technologies as needed to achieve it’s goals (Job Board and Lead submission functionaly)
+
+CHG example of a technology-driven project
+
+SharePoint public sites
+* Someone can correct me if I’m wrong, but the reason we went with Sharepoint was because we had the license already, so let’s use it.
+* A highly specialized team of SharePoint developers was created to build and maintain these sites, who to this day (5 or 6 years later?) are the only ones that can effectively access and maintain these sites (only 1 site left!)
+* Band aid Fixes had to be developed along the way to deal with exapnding technology needs - build a tempoary "shim" to submit leads to the new leads API
+
+
 
 
 ## Think reusability: Develop solutions that maximize reuse and control technical diversity
