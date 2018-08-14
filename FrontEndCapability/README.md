@@ -1,6 +1,6 @@
 # Enterprise Architecture Principles (Front End Capability).
 
-The perpose of this section is to answer our architecutal 
+The purpose of this section is to answer our architectual 
 
 ____
 
@@ -58,6 +58,7 @@ SharePoint public sites
 
 
 ## Think reusability: Develop solutions that maximize reuse and control technical diversity
+Don't repeat yourself (DRY).  Extract similar functionalities into a common place. This will help minimize bugs, and make long term maintenance easier. See [Atomic Design](implementation/atomic-design.md) for a more in depth look at how this can be accomplished with components and Vue.
 
 
 ## Think insight: Design for analytics and intelligence everywhere

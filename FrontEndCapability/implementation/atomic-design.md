@@ -1,4 +1,4 @@
-#Atomic Design
+# Atomic Design
 
 Atomic design in software development is using smaller pieces, or components, to make bigger pieces 
 which will make even bigger pieces and so on until we arrive at our deliverable.
@@ -21,7 +21,7 @@ that we can use in other places to give everything a cohesive look and feel, and
 The ideas of Atomic Design help us do that.
 
 
-##Components
+## Components
 
 Components in software development would be the nails and studs in the analogy above.  They can be 
 combined with other components to make bigger components.  With good design, they can be reused.  
@@ -58,7 +58,7 @@ The above example uses Vue JS as an example.  But in simple terms it
  The code is now much more reusable. Any where on the page that needs a button and a text field can 
  use this.
 
-##Why Vue?
+## Why Vue?
 
 First off, you do not need Vue, or any framework to make reusable components, and use the principles of atomic design.  It is simply a tool to simplify the process. It is a means to an end, and not the end in and of itself.  For the rest of this guide, we will be using Vue JS, and vue files.
 
@@ -225,7 +225,7 @@ child text field updates, it emits an event, and the parent changes it's models 
 I can use this component now in forms all across my application, and give them the same look and feel.
 It's changes are propagated across the app, and is much more maintainable.  
 
-##Best Practices
+## Best Practices
 
 1) Limit the scope of your variables as much as possible.  The more global a variable is, the easier it
 is to change, and the harder it is to debug.
