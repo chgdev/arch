@@ -490,7 +490,7 @@ let neoswingBands = new Array();
 neoswingBands[0] = 'Big Bad Voodoo Daddy';
 neoswingBands[1] = 'The Brian Setzer Orchestra';
 neoswingBands[2] = 'Cherry Poppin\' Daddies';
-neoswingBands[3] = 'Sqirrel Nut Zippers';
+neoswingBands[3] = 'Squirrel Nut Zippers';
 neoswingBands[4] = 'Big Tubba Mista';
 ```
 
@@ -508,7 +508,7 @@ let neoswingBands = [
   'Big Bad Voodoo Daddy',
   'The Brian Setzer Orchestra',
   'Cherry Poppin\' Daddies',
-  'Sqirrel Nut Zippers',
+  'Squirrel Nut Zippers',
   'Big Tubba Mista'
 ];
 ```
