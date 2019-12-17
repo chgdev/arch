@@ -1,6 +1,5 @@
 # API Conventions
 
-
 ## API Types
 ### Interfaces
 #### RESTful API
@@ -57,7 +56,9 @@ Examples:
     GET /users/v1/34123564087
 
 #### Recommendation
-It's not necessary to statically version all APIs. You may consider omitting a version specifier from your URL structure until absolutely necessary.
+It's not necessary to statically version all APIs. You may consider omitting a version specifier from your URL structure until absolutely necessary. Experience API's are most likely to not require versioning as the requirement is based primarily on the number of consumers and how likely you are to make breaking changes.
+
+A version number can be at the endpoint level or the "container" level, depending on where code branches can create differing versions (if each endpoint is its own codebase, versioning goes here, otherwise, it's up a level).
 
 Originally:
 
@@ -126,6 +127,38 @@ Query string parameter names should be `camelCase`.
 #### Filtering (optional)
 #### Pagination (optional)
 
+## Hypermedia 
+
+Hypermedia is a useful tool to add to webservices. We currently recommend HATEOAS style, if implementing hypermedia. Hypermedia is especially useful on common services where many consumers are expected, especially external consumers.
+
+### HATEOAS
+
+#### Examples
+
+## Payload
+
+### Metadata
+
+Some suggested Metadata:
+
+1. `correlationId`
+1. `timestamp`
+1. Probably others...
+
+### Data
+
+#### Format
+
+1. JSON (Content-Type `application/JSON`) is highly recommended for most services.
+1. Top-level element should always be an object to help prevent [JSON Hijacking](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/).
+1. Include meta-data at the top level
+1. Data should be included in a `data` or `records` container
+
+### Conventions
+
+1. Field names should always be in "camelCase" format. 
+  1. Fields should always start with a lower-case letter
+1. Strict "camelCase" should apply to all acronyms and abbreviations to make their boundaries clear: e.g. `userId`, `userSsnVerified`
 
 ## Responses
 
