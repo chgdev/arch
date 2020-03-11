@@ -1,4 +1,4 @@
-# Logging Message Standard 1.0.0-alpha
+# Logging Message Standard 1.0.0
 
 This document describes the standard format for log messages at CHG.
 
@@ -14,7 +14,7 @@ All other fields are optional in the ECS, but if present, must conform to the sp
 CHG's logging message standard extends ECS 1.4.0 in the following ways:
 
 - The following fields are required for all events:
-  - `env`: Extension property declaring the environment; e.g. "production"
+  - `env`: Extension property declaring the environment: one of `production`, `staging`, or `development`
   - `message`
   - `host.ip`
   - `log.level`
@@ -49,7 +49,7 @@ CHG's logging message standard extends ECS 1.4.0 in the following ways:
     "stack_hash": "dce10d59"
   },
   "host": {
-    "ip": "192.168.13731"
+    "ip": "192.168.137.31"
   },
   "log": {
     "level": "error"
