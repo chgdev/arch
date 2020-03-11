@@ -14,6 +14,7 @@ All other fields are optional in the ECS, but if present, must conform to the sp
 CHG's logging message standard extends ECS 1.4.0 in the following ways:
 
 - The following fields are required for all events:
+  - `env`: Extension property declaring the environment; e.g. "production"
   - `message`
   - `host.ip`
   - `log.level`
@@ -40,6 +41,7 @@ CHG's logging message standard extends ECS 1.4.0 in the following ways:
   "ecs": {
     "version": "1.4.0"
   },
+  "env": "production",
   "error": {
     "message": "Expected \"foo\", received \"bar\"",
     "type": "Error",
