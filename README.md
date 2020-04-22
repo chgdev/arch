@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
+
 # Enterprise Architecture Principles.
 
 The crux of what these principles should be and do are as
