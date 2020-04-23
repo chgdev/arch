@@ -1,3 +1,7 @@
+CHG Enterprise Architecture Principles
+
+[![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
+
 # Logging Message Standard 1.0.0
 
 This document describes the standard format for log messages at CHG.

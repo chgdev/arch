@@ -1,6 +1,10 @@
-# Enterprise Architecture Principles (Front End Capability).
+CHG Enterprise Architecture Principles
 
-The purpose of this section is to answer our architectual 
+[![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
+
+# Front End Capability
+
+The purpose of this section is to describe our architectual vision for front-end development.
 
 ____
 

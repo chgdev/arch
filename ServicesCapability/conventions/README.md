@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
+
 # API Conventions
 
 ## API Types
