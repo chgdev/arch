@@ -7,125 +7,195 @@ CHG Enterprise Architecture Principles
 ## API Types
 ### Interfaces
 #### RESTful API
+
 REST should be the default standard for APIs.
 
 #### GraphQL API
-GraphQL is a query language that provides a powerful interface for querying data through an API. This dictates that an API support GraphQL. See graphql.org.
+
+GraphQL is a query language that provides a powerful interface for querying data through an API. This dictates that an API client must support GraphQL. See graphql.org.
 
 ### Layers
 #### Experience API
-An Experience API is an API built for one or more specific experience(s). For example, an API built to support a specific application UI.
+
+An Experience API is an API built for one or more specific experience(s) (UX). For example, an API built to support a specific application UI. An Experience API is usually custom tailored to a UX and aggregates dependent data in a way most useful to the UX in question.
 
 #### Domain API
-Composite API's for Domain data.
+
+Shared API's for Domain data.
 
 #### Application API
+
 Lowest layer of API which works directly with specific applications or data stores.
 
 
 ## General Standards
+
+### Microservices
+
+A microservice is an API that is "just big enough". That description is decidedly ambiguous. A microservice boundary is usually a logical boundary dictated by packaging of deployable code. It can contain multiple endpoints, but should function in one, and only one, logical business domain.
+
+### Storage
+
+A microservice should have one (or more) private datastore(s) to which it is the sole read/write point.
+
 ### Stateless
+
 APIs should be stateless.
 
 ### Idempotent
+
 In almost all cases, APIs should be idempotent.
 
 ### Language Agnostic
+
 APIs should be language agnostic. The outlined syntaxes and standards in this document should help assure that the underlying programming languages should be irrelevant to the interface.
 
 Nowhere in the URL should there be any indication of underlying programming language.
 
-### Environment Agnostic
-The deployed environment for an API is also irrelevant.
+### Infrastructure Agnostic
 
-Nowhere in the URL should there be any indication of underlying environments or architectures.
+The deployed infrastructure for an API is also irrelevant.
+
+Nowhere in the URL should there be any indication of underlying infrastructure or architecture.
 
 ### Non-breaking Changes
+
 Whenever possible, make additive non-breaking changes to APIs. This will help avoid the pain of maintaining multiple deployed versions. See [versioning](#versioning).
 
-
 ## <a name="versioning"></a> Versioning
-When tagging a build, use [Semantic Versioning](http://semver.org).
 
-### Deployed Versions
 While not required, providing versioning is an excellent way to provide non-breaking forward-looking changes to an API with existing consumers.
 
-Be cautious when building APIs. Breaking changes will necessitate new versions and you will have to deploy (and maintain) multiple versions OR all dependent clients will have to conform to the changes. As soon as you deploy multiple versions, you may find it costly to keep multiple versions available long-term.
+### Version Numbering
 
-#### Syntax
-Specify versions in the URL as part of the folder structure. The version of each endpoint should be specified just after the endpoint name.
+When tagging a build and/or incrementing the version via `package.json` or `pom.xml`, use [Semantic Versioning](http://semver.org). The published API version should be only the "major" version portion and should change infrequently, only incrementing when introducing major/breaking changes. For example:
+
+|SemVer Build Version|API Version|
+|--------------------|-----------|
+| 1.0.3 | v1 |
+| 1.1.0 | v1 |
+| 2.0.0 | v2 |
+
+etc.
+
+### Deployed Versions
+
+Be cautious when building APIs. Breaking changes will necessitate new versions and you will have to deploy (and maintain) multiple versions OR all dependent clients will have to conform to the changes at an organized time (likely impossible). As soon as you deploy multiple versions, you may find it costly to keep multiple versions available long-term.
+
+### Number of Versions Supported
+
+It is **recommended** to support no more than two active major versions at one time, due to complexity of maintenance.
+
+### Syntax
+
+Specify versions in the URL as part of the folder structure. The version of each API should be specified at the root, after the API name, but before each endpoint in the API.
+
+Version all endpoints together within an API, rather than worrying about version routes for each endpoint--this would get rather messy in a large API with many endpoints.
 
 Examples:
 
-    GET /users/v1/34123564087
+    GET /identity-service/v1/users/34123564087
+            ^ API name   ^ version   ^ endpoint
 
-#### Recommendation
-It's not necessary to statically version all APIs. You may consider omitting a version specifier from your URL structure until absolutely necessary. Experience API's are most likely to not require versioning as the requirement is based primarily on the number of consumers and how likely you are to make breaking changes.
+### Recommendation
 
-A version number can be at the endpoint level or the "container" level, depending on where code branches can create differing versions (if each endpoint is its own codebase, versioning goes here, otherwise, it's up a level).
+It's not necessary to statically version all APIs. You may consider omitting a version specifier from your URL structure if there are no plans for additional API consumers. Experience API's are most likely to not require versioning as the requirement is based primarily on the number of consumers and how likely you are to make breaking changes.
 
-Originally:
+If your API is planned to be consumed by multiple clients, start with versioning from the beginning, starting with 'v1'. Build this into your initial API endpoints.
 
-    GET /users/16818463
+#### Code and Deployment
 
-Once v2 is necessary and must be deployed alongside v1:
+To simplify deployments, once a breaking change will be introduced, we recommend creating a full copy of the old version (e.g. 'v1') within the (same) code base. Future deployments will create a deployable package that implements each active/supported version.
 
-    GET /users/16818463     // v1
-    GET /users/v2/16818463  // v2
+##### Pros
 
+- Simplified deployment/pipeline infrastructure
+- Simple to make changes to old versions (bug/security fixes)
+- Encourages team to support fewer versions
+- Encourages team to really consider when to make breaking changes/major version increments
+
+##### Cons
+
+- Maintaining two versions requires code duplication
+- Bug fixes may need to be done twice
+- Endpoint routing must be considered up-front for version consideration
+
+##### Other approaches
+
+- Forking the repo to create old version fork
+    - Deployment/pipeline/infrastructure is much more expensive
+    - Infrastructure may not support this approach with the recommended URL structure at all
+- Tagging versions (Git tag)
+    - This works better for Applications than it does for API's. API's are more likely to have multiple live versions at one time and need complex deployment/infrastructure.
+
+
+### Example
+
+Experience API (versionining not necessary):
+
+    GET /identity-service/users/16818463
+
+Common service with multiple planned consumers:
+
+    GET /identity-service/v1/users/16818463     // v1
+    GET /identity-service/v2/users/16818463     // v2
 
 ## URL Structure
 
 General format:
 
-    api.[environment].domain/[container]/objects/[id][?query]
+    [environment].[domain]/[apiname]/[version]/objects/[id][?query]
 
 ### Case Sensitivity
-Domain names are case-insensitive by definition. All other URL constructs are case-sensitive by default (this is recommended). This includes paths and named query-string parameters. Whether query-string values are case-sensitive is up to the application.
+
+Domain names are case-insensitive by definition. All other URL constructs are case-sensitive by default (this is recommended). This includes paths and named query-string parameters. Whether query-string values are case-sensitive is up to the application (but case-sensitive is **always** recommended).
 
 ### Domains
-Keep the domain name simple and logical.
+
+Keep the domain name simple and logical. Domains are typically provided by the company/infrastructure.
+
+### API Name
+
+The name of the API collection/deployment. This should likely NOT be pluralized and should likely have a '-service' suffix.
+
+### Version
+
+Optional. As discussed in [Versioning](#versioning).
 
 #### Environments
-Prefix your primary domain with an environment indicator. The keyword "api" should go before *that* prefix.
+
+Prefix your primary domain with an environment indicator. 
 
 Example:
 
-    api.somedomain.com       // prod
-    api.dev.somedomain.com   // dev
-    api.stage.somedomain.com //stage
+    somedomain.com/apiname       // prod
+    dev.somedomain.com/apiname   // dev
+    stage.somedomain.com/apiname //stage
 
 ### Path
-All path components should be all lower-case. Words should be separated with dashes.
 
+All path components should be all lower-case. Words should be separated with dashes.
 
 Endpoint names should be plural. This is to avoid ambiguity.
 
 Example:
 
-    GET /travel/airport-codes/  // list of airport codes
-    GET /users          // list of users
-    GET /users/8187373  // get user 8187373
-    POST /users         // create new user(s)
-    GET /users/8187373/preferences // get list of preferences for user 8187373
-
-**NOTE:** 'travel' is a [container](#container), not a service, therefore it need not be plural.
-
-#### <a name="container"></a> Container (optional)
-There may be a logical container for a collection of APIs. This may even be multiple levels.
-
-This could be a categorization, logical structure, or a named collection like "tools" or "helpers".
-
-This level is NOT required.
+    GET /travel-service/v1/airport-codes/  // list of airport codes in v1 of the travel-service
+    GET /identity-service/users          // list of users
+    GET /identity-service/users/8187373  // get user 8187373
+    POST /identity-service/users         // create new user(s)
+    GET /identity-service/users/8187373/preferences // get list of preferences for user 8187373
 
 ### Version
+
 See [Versioning](#versioning) for guidelines.
 
 Examples:
 
-    GET /users/v2/818913/settings
+    GET /identity-service/v2/users/818913/settings
 
 ### Query String
+
 Query string parameter names should be `camelCase`.
 
 #### Filtering (optional)
@@ -139,7 +209,7 @@ Hypermedia is a useful tool to add to webservices. We currently recommend HATEOA
 
 #### Examples
 
-## Payload
+## Payloads
 
 ### Metadata
 
@@ -199,6 +269,7 @@ Common codes:
 
 
 ## Security
+
 APIs should always be served with TLS where possible.
 
 ### Methods
