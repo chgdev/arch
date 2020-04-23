@@ -2,7 +2,7 @@ CHG Enterprise Architecture Principles
 
 [![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
 
-# CHG JavaScript Development Principles and Best Practices #
+# CHG JavaScript Development Principles and Best Practices
 
 This document was written by the Solution Architect team to help developers in the following ways:
 

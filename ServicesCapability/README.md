@@ -2,7 +2,7 @@ CHG Enterprise Architecture Principles
 
 [![GitHub version](https://badge.fury.io/gh/chgdev%2Farch.svg)](http://badge.fury.io/gh/chgdev%2Farch)
 
-# Enterprise Architecture Principles - Services Capability
+# Services Capability
 
 ____
 
