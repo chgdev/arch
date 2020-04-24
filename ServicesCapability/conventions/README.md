@@ -128,6 +128,9 @@ To simplify deployments, once a breaking change will be introduced, we recommend
 - Tagging versions (Git tag)
     - This works better for Applications than it does for API's. API's are more likely to have multiple live versions at one time and need complex deployment/infrastructure.
 
+### Health Endpoint Considerations
+
+Currently, we recommend health/readiness/liveness endpoints to live outside the scope of API versioning, as they are more closely related to the status of the overall application container and should be independent of multiple API versions.
 
 ### Example
 
@@ -200,6 +203,12 @@ Query string parameter names should be `camelCase`.
 
 #### Filtering (optional)
 #### Pagination (optional)
+
+## Health Endpoints
+
+Health, readiness, and liveness probing endpoints are required by most infrastructure we support. 
+
+More details needed here.
 
 ## Hypermedia 
 
