@@ -132,7 +132,7 @@ To simplify deployments, once a breaking change will be introduced, we recommend
 
 Currently, we recommend health/readiness/liveness endpoints to live outside the scope of API versioning, as they are more closely related to the status of the overall application container and should be independent of multiple API versions.
 
-### Example
+### Example of API URLs with Version
 
 Experience API (versionining not necessary):
 
